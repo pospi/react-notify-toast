@@ -150,6 +150,10 @@ var Toast = function (_React$Component) {
 				context.updateStyle(base, stylesShow);
 			}, 100); // wait 100ms after the component is called to animate toast.
 
+			if (this.props.timeout === -1) {
+				return;
+			}
+
 			// Hide after timeout
 			var stylesHide = {
 				transform: 'translateY(-108px)',
@@ -238,6 +242,10 @@ function show(text, type, timeout) {
 
 		// Render Component with Props.
 		renderToast(text, type, renderTimeout);
+
+		if (this.props.timeout === -1) {
+			return;
+		}
 
 		// Unmount react component after the animation finished.
 		setTimeout(function () {
